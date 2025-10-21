@@ -1,10 +1,11 @@
+import { TanStackDevtools } from '@tanstack/react-devtools'
 import {
   HeadContent,
   Scripts,
   createRootRouteWithContext,
+  useRouterState,
 } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
-import { TanStackDevtools } from '@tanstack/react-devtools'
 
 import Header from '../components/Header'
 
@@ -44,13 +45,17 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
 })
 
 function RootDocument({ children }: { children: React.ReactNode }) {
+  const routerState = useRouterState()
+  const hideHeader = routerState.location.pathname.includes('/dashboard/')
   return (
     <html lang="en">
       <head>
         <HeadContent />
       </head>
       <body>
+        {!hideHeader && 
         <Header />
+        }
         {children}
         <TanStackDevtools
           config={{
