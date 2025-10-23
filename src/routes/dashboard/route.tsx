@@ -7,7 +7,7 @@ export const Route = createFileRoute("/dashboard")({
 
 function RouteComponent() {
   return (
-    <div className="flex h-screen bg-linear-to-br from-neutral-100 via-stone-200 to-sky-100 md:overflow-hidden">
+    <div className="flex flex-col h-screen bg-linear-to-br from-orange-100 via-stone-200 to-sky-100 md:flex-row md:overflow-hidden">
       <SideNav />
       <section>
         <Outlet />
